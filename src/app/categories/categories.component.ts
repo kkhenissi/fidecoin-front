@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CatalogueService } from '../catalogue.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-categories',
@@ -8,8 +9,9 @@ import { CatalogueService } from '../catalogue.service';
 })
 export class CategoriesComponent implements OnInit {
 
-  constructor(private catService: CatalogueService ) { }
+  constructor(private catService: CatalogueService, private router: Router ) { }
   categories;
+  currentCategorie;
 
   ngOnInit() {
     this.catService.getAllCategories()
@@ -21,8 +23,16 @@ export class CategoriesComponent implements OnInit {
 
   }
 
-  onGetProduct(c) {
-    
+  onGetProduct(cat) {
+    this.currentCategorie = cat;
+
+    let url = cat._links.produits.href;
+    console.log('555555555555555555', url);
+  //  console.log(this.router.navigateByUrl(btoa('/produits/' + btoa(urlProduits))));
+ // alert('11')
+ // this.router.navigateByUrl(btoa('/produits/' + btoa(urlProduits)));
+ this.router.navigateByUrl('/products/' + btoa(url));
+
 
   }
 

@@ -16,6 +16,8 @@ export class CatalogueService {
    }
 
    getRessource(url) {
-     
+
+    console.log('77777777777777', url);
+    return this.http.get(url);
    }
 }

@@ -1,3 +1,14 @@
-<p>
-  produits works!
-</p>
+
+
+<table class="table table-stripped">
+  <tr>
+    <th>Designation</th><th>Description</th><th>prix initial</th><th>Photo</th>
+  </tr>
+  <!-- {{produitsOfCat._embedded.produits.nomProduit}}  -->
+  <div *ngIf="products._embedded.produits">
+  <tr *ngFor="let p of products._embedded.produits">
+     <td>{{p.nomProduit}}</td>  
+
+  </tr>
+</div>
+</table>
