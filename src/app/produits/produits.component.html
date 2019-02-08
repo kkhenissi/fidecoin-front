@@ -1,14 +1,15 @@
 
 
-<table class="table table-stripped">
+<table class="table table-stripped" *ngIf="products._embedded.produits">
   <tr>
     <th>Designation</th><th>Description</th><th>prix initial</th><th>Photo</th>
   </tr>
   <!-- {{produitsOfCat._embedded.produits.nomProduit}}  -->
-  <div *ngIf="products._embedded.produits">
+ 
   <tr *ngFor="let p of products._embedded.produits">
-     <td>{{p.nomProduit}}</td>  
-
+     <td>{{p.nomProduit}}</td>   
+     <td>{{p.designation}}</td>  
+     <td>{{p.startPrice | number:'0.2'}}</td>
   </tr>
-</div>
+
 </table>

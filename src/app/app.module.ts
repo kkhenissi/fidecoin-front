@@ -8,19 +8,25 @@ import { ProduitsComponent } from './produits/produits.component';
 import { HttpClient } from 'selenium-webdriver/http';
 import { CatalogueService } from './catalogue.service';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
+// tslint:disable-next-line:import-spacing
+import { FormsModule }   from '@angular/forms';
+import { AuthenticationService } from './authentication.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     CategoriesComponent,
-    ProduitsComponent
+    ProduitsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [CatalogueService],
+  providers: [CatalogueService, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
