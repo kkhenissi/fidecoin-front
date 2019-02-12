@@ -12,13 +12,19 @@ import { LoginComponent } from './login/login.component';
 // tslint:disable-next-line:import-spacing
 import { FormsModule }   from '@angular/forms';
 import { AuthenticationService } from './authentication.service';
+import { AdminCategoriesComponent } from './admin-categories/admin-categories.component';
+import { AdminProductsComponent } from './admin-products/admin-products.component';
+import { AdminUsersComponent } from './admin-users/admin-users.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CategoriesComponent,
     ProduitsComponent,
-    LoginComponent
+    LoginComponent,
+    AdminCategoriesComponent,
+    AdminProductsComponent,
+    AdminUsersComponent
   ],
   imports: [
     BrowserModule,

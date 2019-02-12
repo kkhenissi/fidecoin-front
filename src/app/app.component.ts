@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from './authentication.service';
 
 @Component({
@@ -6,14 +6,18 @@ import { AuthenticationService } from './authentication.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  title = 'fideCoin-front';
 
 
   constructor(private authenticationService: AuthenticationService) {
 
   }
-  title = 'fideCoin-front';
+ 
 
+  ngOnInit(): void {
+   this.authenticationService.loadToken();
+  }
 
 
   isAdmin() {

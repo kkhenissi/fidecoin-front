@@ -1,0 +1,59 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Gestion des Categories</div>
+  <div class="panel-body">
+
+      <div>
+          <button  class="btn btn-success" (click)="onAddCat(c)">
+              <span class="glyphicon glyphicon-plus"></span>
+          </button>
+      </div>
+          
+      <p></p>
+      <div *ngIf="mode=='new-cat'" class="col-md-6">
+         <form #f='ngForm' (ngSubmit)="onSaveCat(f.value)"> 
+            <div class="form-group">
+              <label class="control-label">Nom Categorie</label>
+              <input type="text" name="nomCategorie" ngModel class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">Description Categorie</label>
+                <input type="text" name="description" ngModel class="form-control">
+            </div>
+            <button class="btn  btn-success" type="submit">Save</button>
+         </form>
+
+      </div>
+  <div *ngIf="mode == 'list'">
+      <table class="table" *ngIf="categories">
+          <tr>
+            <th>Nom Categorie</th>
+            <th>Description  Categorie</th>
+          </tr>
+          <tr *ngFor="let c of categories._embedded.categories">
+    
+            <td>
+                {{c.nomCategorie}}
+            </td>
+            <td>
+                {{c.description}}
+            </td>
+    
+    
+            <td>
+                <button  class="btn btn-danger" (click)="onDeleteCat(c)">
+                  <span class="glyphicon glyphicon-remove">
+    
+                  </span>
+                </button>
+            </td>
+           
+          </tr>
+    
+        </table>
+
+  </div>
+    
+  </div>
+
+</div>

@@ -42,10 +42,12 @@ export class AuthenticationService {
 
   isAdmin() {
     return this.roles.indexOf('ROLE_ADMIN') >= 0;
+
   }
 
   isUser() {
     return this.roles.indexOf('ROLE_USER') >= 0;
+    
   }
 
   isAuthenticated() {
@@ -61,6 +63,11 @@ export class AuthenticationService {
     this.jwt = undefined;
     this.userName = undefined;
     this.roles = undefined;
+  }
+
+  loadToken() {
+    this.jwt = localStorage.getItem('token');
+    this.parseJWT();
   }
 
 }
