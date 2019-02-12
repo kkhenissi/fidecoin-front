@@ -3,7 +3,7 @@
   <div class="panel-body">
 
       <div>
-          <button  class="btn btn-success" (click)="onAddCat(c)">
+          <button  class="btn btn-success" (click)="onAddCat()">
               <span class="glyphicon glyphicon-plus"></span>
           </button>
       </div>
@@ -22,8 +22,24 @@
             </div>
             <button class="btn  btn-success" type="submit">Save</button>
          </form>
-
       </div>
+
+      <div *ngIf="mode=='edit-cat'" class="col-md-6">
+          <form #f='ngForm' (ngSubmit)="onUpdateCat(f.value)"> 
+             <div class="form-group">
+               <label class="control-label">Nom Categorie</label>
+               <input type="text" name="nomCategorie" ngModel class="form-control" [(ngModel)]='currentCategorie.nomCategorie'>
+             </div>
+ 
+             <div class="form-group">
+                 <label class="control-label">Description Categorie</label>
+                 <input type="text" name="description" ngModel class="form-control" [(ngModel)]='currentCategorie.description'>
+             </div>
+             <button class="btn  btn-success" type="submit">Update</button>
+          </form>
+       </div>
+
+
   <div *ngIf="mode == 'list'">
       <table class="table" *ngIf="categories">
           <tr>
@@ -42,9 +58,12 @@
     
             <td>
                 <button  class="btn btn-danger" (click)="onDeleteCat(c)">
-                  <span class="glyphicon glyphicon-remove">
-    
-                  </span>
+                  <span class="glyphicon glyphicon-remove"></span>
+                </button>
+            </td>
+            <td>
+                <button  class="btn btn-success" (click)="onEditCat(c)">
+                  <span class="glyphicon glyphicon-edit"></span>
                 </button>
             </td>
            

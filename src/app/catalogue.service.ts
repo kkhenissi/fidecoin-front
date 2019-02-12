@@ -34,4 +34,10 @@ export class CatalogueService {
    return this.http.post(url, data,  {headers: header});
 
   }
+
+  putRessource(url, data) {
+    const header = new HttpHeaders({'authorization': this.authService.jwt});
+    return this.http.patch(url, data,  {headers: header});
+   
+  }
 }

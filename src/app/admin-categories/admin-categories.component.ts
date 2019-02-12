@@ -9,6 +9,7 @@ import { CatalogueService } from '../catalogue.service';
 export class AdminCategoriesComponent implements OnInit {
   categories;
   mode = 'list';
+  currentCategorie;
 
   constructor(private catalogueService: CatalogueService) { }
 
@@ -41,7 +42,7 @@ export class AdminCategoriesComponent implements OnInit {
     this.mode = 'new-cat';
 
   }
-
+ 
   onSaveCat(data) {
     console.log('new CAtegorie!!', data);
     const url = this.catalogueService.host + '/categories';
@@ -52,6 +53,30 @@ export class AdminCategoriesComponent implements OnInit {
          }, err => {
            console.log('add categorie has failed !!', err);
          });
+  }
+
+
+  onUpdateCat(data) {
+  //  const url = this.catalogueService.host + '/categories';
+    this.catalogueService.putRessource(this.currentCategorie._links.self.href, data)
+         .subscribe(data => {
+            this.onGetAllCategories();
+            this.mode = 'list';
+         }, err => {
+           console.log('add categorie has failed !!', err);
+         });
+  }
+
+  
+  onEditCat(cat) {
+     this.catalogueService.getRessource(cat._links.self.href)
+        .subscribe(data => {
+        this.currentCategorie = data;
+        this.mode = 'edit-cat';
+        }, err => {
+          console.log('problem was happen wen edit categorie', err);
+        });
+
   }
 
 }
