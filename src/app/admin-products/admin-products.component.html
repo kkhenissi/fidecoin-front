@@ -1,3 +1,80 @@
-<p>
-  admin-products works!
-</p>
+<div class="panel panel-default">
+    <div class="panel-heading">Gestion des Produitss</div>
+    <div class="panel-body">
+  
+        <div>
+            <button  class="btn btn-success" (click)="onAddProd()">
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
+        </div>
+            
+        <p></p>
+
+
+        <div *ngIf="mode=='new-prod'" class="col-md-6">
+           <form #f='ngForm' (ngSubmit)="onSaveProd(f.value)"> 
+              <div class="form-group">
+                <label class="control-label">Nom Produit</label>
+                <input type="text" name="nomProduit" ngModel class="form-control">
+              </div>
+  
+              <div class="form-group">
+                  <label class="control-label">Description</label>
+                  <input type="text" name="designation" ngModel class="form-control">
+              </div>
+              <button class="btn  btn-success" type="submit">Save</button>
+           </form>
+        </div>
+  
+        <div *ngIf="mode=='edit-prod'" class="col-md-6">
+            <form #f='ngForm' (ngSubmit)="onUpdateProd(f.value)"> 
+                <div class="form-group">
+                    <label class="control-label">Nom Produit</label>
+                    <input type="text" name="nomProduit" ngModel class="form-control"  [(ngModel)]='currentProduit.nomProduit'>
+                  </div>
+      
+                  <div class="form-group">
+                      <label class="control-label">Description</label>
+                      <input type="text" name="designation" ngModel class="form-control"  [(ngModel)]='currentProduit.designation'>
+                  </div>
+               <button class="btn  btn-success" type="submit">Update</button>
+            </form>
+         </div>
+  
+  
+    <div *ngIf="mode == 'list'">
+        <table class="table" *ngIf="produits">
+            <tr>
+              <th>Nom Produit</th>
+              <th>Description  </th>
+            </tr>
+            <tr *ngFor="let p of produits._embedded.produits">
+      
+              <td>
+                  {{p.nomProduit}}
+              </td>
+              <td>
+                  {{p.designation}}
+              </td>
+      
+      
+              <td>
+                  <button  class="btn btn-danger" (click)="onDeleteProd(p)">
+                    <span class="glyphicon glyphicon-remove"></span>
+                  </button>
+              </td>
+              <td>
+                  <button  class="btn btn-success" (click)="onEditProd(p)">
+                    <span class="glyphicon glyphicon-edit"></span>
+                  </button>
+              </td>
+             
+            </tr>
+      
+          </table>
+  
+    </div>
+      
+    </div>
+  
+  </div>
