@@ -6,7 +6,7 @@ import { AuthenticationService } from './authentication.service';
   providedIn: 'root'
 })
 export class CatalogueService {
-  
+
 
   public host: String = 'http://localhost:8080';
 
@@ -16,10 +16,15 @@ export class CatalogueService {
   getAllProduits(): any {
     return this.http.get(this.host + '/produits');
    }
-   
+
   getAllCategories() {
     return this.http.get(this.host + '/categories');
    }
+
+   getAllAppUsers(): any {
+    return this.http.get(this.host + '/appUsers');
+  }
+
 
    getRessource(url) {
 
