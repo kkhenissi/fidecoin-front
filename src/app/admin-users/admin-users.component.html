@@ -27,7 +27,7 @@
         </div>
   
         <div *ngIf="mode=='edit-user'" class="col-md-6">
-            <form #f='ngForm' (ngSubmit)="onUpdateProd(f.value)"> 
+            <form #f='ngForm' (ngSubmit)="onUpdateAppUser(f.value)"> 
                 <div class="form-group">
                     <label class="control-label">Nom Utilisateur</label>
                     <input type="text" name="userName" ngModel class="form-control"  [(ngModel)]='currentAppUser.userName'>
@@ -48,7 +48,7 @@
               <th>Nom Utilisateur</th>
               <th>Active  </th>
             </tr>
-            <tr *ngFor="let urs of appUsers._embedded.appUsers">
+            <tr *ngFor="let usr of appUsers._embedded.appUsers">
       
               <td>
                   {{usr.userName}}
