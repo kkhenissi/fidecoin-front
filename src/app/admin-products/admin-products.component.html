@@ -78,7 +78,8 @@
                       
                   <div class="form-group"  class="col-md-4">
                             <label class="control-label">Photo</label>
-                            <input type="text" name="urlPhoto" ngModel class="form-control" [(ngModel)]='currentProduit.urlPhoto'>
+                            <input type="file" name="urlPhoto" ngModel class="form-control" [(ngModel)]='currentProduit.urlPhoto'>
+                            <!-- [(ngModel)]='currentProduit.urlPhoto' -->
                    
                       
                   <td></td>
@@ -108,16 +109,16 @@
               <th>Photo </th>
             </tr>
             <tr *ngFor="let p of produits._embedded.produits">
-                    <td style=" vertical-align:middle">{{p.nomProduit}}</td><td>{{p.designation}}</td><td>{{p.categorie}}</td><td>{{p.startPrice}}</td><td>{{p.currentPrice}}</td>
+                    <td style=" vertical-align:middle">{{p.nomProduit}}</td><td style=" vertical-align:middle">{{p.designation}}</td><td style=" vertical-align:middle">{{p.categorie}}</td><td style=" vertical-align:middle">{{p.startPrice}}</td><td style=" vertical-align:middle">{{p.currentPrice}}</td>
                     <td><img class="img-circle" src={{p.urlPhoto}} width="100" height="100"></td>
-                     <td>
+                     <td style=" vertical-align:middle">
                             <!-- {{p | json}} -->
                          <button  class="btn btn-danger" (click)="onDeleteProd(p)">
                            <span class="glyphicon glyphicon-remove"></span>
                          </button>
                      </td>
-                     <td>
-                         <button class="btn btn-success" (click)="onEditProd(p)">
+                     <td style=" vertical-align:middle">
+                         <button  class="btn btn-success" (click)="onEditProd(p)">
                             <span class="glyphicon glyphicon-edit"></span>
                          </button>
                      </td>
