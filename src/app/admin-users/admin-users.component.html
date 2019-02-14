@@ -3,7 +3,7 @@
     <div class="panel-body">
   
         <div>
-            <button  class="btn btn-success" (click)="onAddAppUser()">
+            <button  class="btn btn-success col-xs-12" (click)="onAddAppUser()">
                 <span class="glyphicon glyphicon-plus"></span>
             </button>
         </div>
@@ -11,7 +11,7 @@
         <p></p>
 
 
-        <div *ngIf="mode=='new-user'" class="col-md-6">
+        <div *ngIf="mode=='new-user'" class="col-md-12">
            <form #f='ngForm' (ngSubmit)="onSaveAppUser(f.value)"> 
               <div class="form-group">
                 <label class="control-label">Nom Utilisateur</label>
@@ -22,11 +22,14 @@
                   <label class="control-label">Active</label>
                   <input type="text" name="active" ngModel class="form-control">
               </div>
-              <button class="btn  btn-success" type="submit">Save</button>
-           </form>
+              <div class="col-md-5"></div>
+              <div>
+                      <button  style="margin-top:12px" class="btn  btn-success col-md-2 col-xs-12" type="submit">Save</button>
+              </div>
+            </form>
         </div>
   
-        <div *ngIf="mode=='edit-user'" class="col-md-6">
+        <div *ngIf="mode=='edit-user'">
             <form #f='ngForm' (ngSubmit)="onUpdateAppUser(f.value)"> 
                 <div class="form-group">
                     <label class="control-label">Nom Utilisateur</label>
@@ -37,7 +40,10 @@
                       <label class="control-label">Active</label>
                       <input type="text" name="active" ngModel class="form-control"  [(ngModel)]='currentAppUser.active'>
                   </div>
-               <button class="btn  btn-success" type="submit">Update</button>
+                  <div class="col-md-5"></div>
+                  <div>
+                        <button  style="margin-top:12px" class="btn  btn-success col-md-2 col-xs-12" type="submit">Update</button>
+                  </div>
             </form>
          </div>
   

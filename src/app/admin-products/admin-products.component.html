@@ -3,7 +3,7 @@
     <div class="panel-body">
   
         <div>
-            <button  class="btn btn-success" (click)="onAddProd()">
+            <button  class="btn btn-success col-xs-12" (click)="onAddProd()">
                 <span class="glyphicon glyphicon-plus"></span>
             </button>
         </div>
@@ -11,33 +11,74 @@
         <p></p>
 
 
-        <div *ngIf="mode=='new-prod'" class="col-md-6">
+        <div *ngIf="mode=='new-prod'">
            <form #f='ngForm' (ngSubmit)="onSaveProd(f.value)"> 
-              <div class="form-group">
+
+              <div class="form-group"  class="col-md-4">
                 <label class="control-label">Nom Produit</label>
                 <input type="text" name="nomProduit" ngModel class="form-control">
               </div>
   
-              <div class="form-group">
+              <div class="form-group"  class="col-md-8">
                   <label class="control-label">Description</label>
-                  <input type="text" name="designation" ngModel class="form-control">
+                  <input type="text"class="btn btn-success col-xs-12" name="designation" ngModel class="form-control">
               </div>
-              <button class="btn  btn-success" type="submit">Save</button>
+
+              <div class="form-group"  class="col-md-2">
+                <label class="control-label">Prix initial</label>
+                <input type="text" name="startPrice" ngModel class="form-control">
+              </div>
+  
+              <div class="form-group"  class="col-md-2">
+                  <label class="control-label">Prix actuel</label>
+                  <input type="text" name="currentPrice" ngModel class="form-control">
+              </div>
+              
+              <div class="form-group"  class="col-md-8">
+                    <label class="control-label">Photo</label>
+                    <input type="text" name="currentPrice" ngModel class="form-control">
+              </div>
+ 
+           <div class="col-md-5">
+
+           </div>
+              <div>
+                    <button  style="margin-top:12px" class="btn  btn-success col-md-2 col-xs-12" type="submit">Save</button>
+              </div>
+             
            </form>
         </div>
   
-        <div *ngIf="mode=='edit-prod'" class="col-md-6">
+        <div *ngIf="mode=='edit-prod'">
             <form #f='ngForm' (ngSubmit)="onUpdateProd(f.value)"> 
-                <div class="form-group">
-                    <label class="control-label">Nom Produit</label>
-                    <input type="text" name="nomProduit" ngModel class="form-control"  [(ngModel)]='currentProduit.nomProduit'>
+                  <div class="form-group"  class="col-md-4">
+                      <label class="control-label">Nom Produit</label>
+                      <input type="text" name="nomProduit" ngModel class="form-control"  [(ngModel)]='currentProduit.nomProduit'>
                   </div>
       
-                  <div class="form-group">
+                  <div class="form-group"  class="col-md-8">
                       <label class="control-label">Description</label>
                       <input type="text" name="designation" ngModel class="form-control"  [(ngModel)]='currentProduit.designation'>
                   </div>
-               <button class="btn  btn-success" type="submit">Update</button>
+
+                  <div class="form-group"  class="col-md-2">
+                        <label class="control-label">Prix initial</label>
+                        <input type="text" name="startPrice" ngModel class="form-control" [(ngModel)]='currentProduit.startPrice'>
+                      </div>
+          
+                      <div class="form-group"  class="col-md-2">
+                          <label class="control-label">Prix actuel</label>
+                          <input type="text" name="currentPrice" ngModel class="form-control" [(ngModel)]='currentProduit.currentPrice'>
+                      </div>
+                      
+                      <div class="form-group"  class="col-md-8">
+                            <label class="control-label">Photo</label>
+                            <input type="text" name="currentPrice" ngModel class="form-control" [(ngModel)]='currentProduit.Photo'>
+                      </div>
+                  <div class="col-md-5"></div>
+                  <div>
+                        <button  style="margin-top:12px" class="btn  btn-success col-md-2 col-xs-12" type="submit">Save</button>
+                  </div>
             </form>
          </div>
   
@@ -47,6 +88,10 @@
             <tr>
               <th>Nom Produit</th>
               <th>Description  </th>
+              <th>Categorie  </th>
+              <th>Prix initial</th>
+              <th>Prix actuel </th>
+              <th>Photo </th>
             </tr>
             <tr *ngFor="let p of produits._embedded.produits">
       
@@ -56,6 +101,18 @@
               <td>
                   {{p.designation}}
               </td>
+              <td>
+                    {{p.Categorie}}
+                </td>
+              <td>
+                    {{p.startPrice}}
+              </td>
+              <td>
+                    {{p.currentPrice}}
+              </td>
+              <td>
+                    {{p.Photo}}
+              </td>
       
       
               <td>
@@ -64,7 +121,7 @@
                   </button>
               </td>
               <td>
-                  <button  class="btn btn-success" (click)="onEditProd(p)">
+                  <button class="btn btn-success" (click)="onEditProd(p)">
                     <span class="glyphicon glyphicon-edit"></span>
                   </button>
               </td>
