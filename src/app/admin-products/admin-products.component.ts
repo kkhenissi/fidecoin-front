@@ -72,6 +72,7 @@ export class AdminProductsComponent implements OnInit {
      this.catalogueService.getRessource(prd._links.self.href)
         .subscribe(data => {
         this.currentProduit = data;
+        console.log('Edit produit', this.currentProduit);
         this.mode = 'edit-prod';
         }, err => {
           console.log('problem was happen wen edit produit', err);

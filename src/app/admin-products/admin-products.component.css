@@ -1,0 +1,8 @@
+#images {
+    width: 2000px; /* Increase if needed */
+  }
+  #images img {
+    width: 50px;
+    height: 20px;
+    float: left;
+  }

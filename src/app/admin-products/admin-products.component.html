@@ -15,7 +15,7 @@
            <form #f='ngForm' (ngSubmit)="onSaveProd(f.value)"> 
 
               <div class="form-group"  class="col-md-4">
-                <label class="control-label">Nom Produit</label>
+                <label  class="control-label">Nom Produit</label>
                 <input type="text" name="nomProduit" ngModel class="form-control">
               </div>
   
@@ -63,29 +63,37 @@
 
                   <div class="form-group"  class="col-md-3">
                         <label class="control-label">Categorie</label>
-                        <input type="text" name="Categorie" ngModel class="form-control"  [(ngModel)]='currentProduit.Categorie.nomCategorie'>
+                        <input type="text" name="Categorie" ngModel class="form-control">
                   </div>
 
                   <div class="form-group"  class="col-md-2">
                         <label class="control-label">Prix initial</label>
                         <input type="text" name="startPrice" ngModel class="form-control" [(ngModel)]='currentProduit.startPrice'>
-                      </div>
+                  </div>
           
-                      <div class="form-group"  class="col-md-2">
+                  <div class="form-group"  class="col-md-2">
                           <label class="control-label">Prix actuel</label>
                           <input type="text" name="currentPrice" ngModel class="form-control" [(ngModel)]='currentProduit.currentPrice'>
-                      </div>
+                  </div>
                       
-                      <div class="form-group"  class="col-md-8">
+                  <div class="form-group"  class="col-md-4">
                             <label class="control-label">Photo</label>
-                            <input type="text" name="currentPrice" ngModel class="form-control" [(ngModel)]='currentProduit.Photo'>
-                      </div>
+                            <input type="text" name="urlPhoto" ngModel class="form-control" [(ngModel)]='currentProduit.urlPhoto'>
+                   
+                      
+                  <td></td>
+                  </div>
+                  <div class="col-md-8"></div>
+                  <div class=" img-circle col-md-4">
+                        <img src={{currentProduit.urlPhoto}} width="380" height="300">
+                  </div>    
                   <div class="col-md-5"></div>
+                 
                   <div>
-                        <button  style="margin-top:12px" class="btn  btn-success col-md-2 col-xs-12" type="submit">Save</button>
+                        <button  style="margin-top:12px" class="btn  btn-success col-md-2 col-xs-12" type="submit">Update</button>
                   </div>
             </form>
-         </div>
+        </div>
   
   
     <div *ngIf="mode == 'list'">
@@ -100,7 +108,8 @@
               <th>Photo </th>
             </tr>
             <tr *ngFor="let p of produits._embedded.produits">
-                    <td>{{p.nomProduit}}</td><td>{{p.designation}}</td><td>{{p.categorie}}</td><td>{{p.startPrice}}</td><td>{{p.currentPrice}}</td><td>{{p.Photo}}</td>
+                    <td style=" vertical-align:middle">{{p.nomProduit}}</td><td>{{p.designation}}</td><td>{{p.categorie}}</td><td>{{p.startPrice}}</td><td>{{p.currentPrice}}</td>
+                    <td><img class="img-circle" src={{p.urlPhoto}} width="100" height="100"></td>
                      <td>
                             <!-- {{p | json}} -->
                          <button  class="btn btn-danger" (click)="onDeleteProd(p)">
