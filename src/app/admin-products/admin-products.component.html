@@ -51,14 +51,19 @@
   
         <div *ngIf="mode=='edit-prod'">
             <form #f='ngForm' (ngSubmit)="onUpdateProd(f.value)"> 
-                  <div class="form-group"  class="col-md-4">
+                  <div class="form-group"  class="col-md-3">
                       <label class="control-label">Nom Produit</label>
                       <input type="text" name="nomProduit" ngModel class="form-control"  [(ngModel)]='currentProduit.nomProduit'>
                   </div>
       
-                  <div class="form-group"  class="col-md-8">
+                  <div class="form-group"  class="col-md-6">
                       <label class="control-label">Description</label>
                       <input type="text" name="designation" ngModel class="form-control"  [(ngModel)]='currentProduit.designation'>
+                  </div>
+
+                  <div class="form-group"  class="col-md-3">
+                        <label class="control-label">Categorie</label>
+                        <input type="text" name="Categorie" ngModel class="form-control"  [(ngModel)]='currentProduit.Categorie.nomCategorie'>
                   </div>
 
                   <div class="form-group"  class="col-md-2">
