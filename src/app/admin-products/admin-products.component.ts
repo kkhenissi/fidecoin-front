@@ -12,10 +12,22 @@ export class AdminProductsComponent implements OnInit {
   currentProduit;
   currentCategorie;
 
+  categoriesProd;
+
   constructor(private catalogueService: CatalogueService) { }
 
   ngOnInit() {
     this.onGetAllProduits();
+    this.onGetAllCategories();
+  }
+
+  onGetAllCategories()  {
+    this.catalogueService.getAllCategories()
+    .subscribe(data => {
+        this.categoriesProd = data;
+    }, err => {
+      console.log('problem  to load categories ', err);
+    });
   }
 
   onGetAllProduits()  {
