@@ -10,6 +10,7 @@ export class AdminProductsComponent implements OnInit {
   produits;
   mode = 'list';
   currentProduit;
+  currentCategorie;
 
   constructor(private catalogueService: CatalogueService) { }
 
@@ -70,8 +71,13 @@ export class AdminProductsComponent implements OnInit {
   
   onEditProd(prd) {
      this.catalogueService.getRessource(prd._links.self.href)
-        .subscribe(data => {
+            .subscribe(data => {
         this.currentProduit = data;
+        this.catalogueService.getRessource(prd._links.categorie.href)
+            .subscribe(cat => { this.currentCategorie = cat;
+              this.currentProduit.categorie = this.currentCategorie.nomCategorie;
+              console.log('Categorie associer a ce  produit', cat);
+                      }, err => { console.log('categorie inexistante', err); });
         console.log('Edit produit', this.currentProduit);
         this.mode = 'edit-prod';
         }, err => {
