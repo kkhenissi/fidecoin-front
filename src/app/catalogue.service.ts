@@ -13,11 +13,21 @@ export class CatalogueService {
   constructor(private http: HttpClient,
               private authService: AuthenticationService) { }
 
+
+  getAllProduitsCustomRest() {
+      const header = new HttpHeaders({'authorization': this.authService.jwt});
+      return this.http.get(this.host + '/adminProd', {headers: header});
+               }
   getAllProduits(): any {
     return this.http.get(this.host + '/produits');
    }
 
-  getAllCategories() {
+  getAllCategoriesCustomRest() {
+    const header = new HttpHeaders({'authorization': this.authService.jwt});
+    return this.http.get(this.host + '/adminCat', {headers: header});
+   }
+
+   getAllCategories() {
     return this.http.get(this.host + '/categories');
    }
 
@@ -44,7 +54,9 @@ export class CatalogueService {
 
   putRessource(url, data) {
     const header = new HttpHeaders({'authorization': this.authService.jwt});
-    return this.http.patch(url, data,  {headers: header});
+    console.log('what in data here =====>', data);
+    console.log('what in url here =====>', url);
+    return this.http.put(url, data,  {headers: header});
    
   }
 }

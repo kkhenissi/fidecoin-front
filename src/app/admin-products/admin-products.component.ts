@@ -22,16 +22,17 @@ export class AdminProductsComponent implements OnInit {
   }
 
   onGetAllCategories()  {
-    this.catalogueService.getAllCategories()
+    this.catalogueService.getAllCategoriesCustomRest()
     .subscribe(data => {
         this.categoriesProd = data;
+        console.log(' categories from custom rest ', this.categoriesProd);
     }, err => {
-      console.log('problem  to load categories ', err);
+      console.log('problem  t9o load categories ', err);
     });
   }
 
   onGetAllProduits()  {
-    this.catalogueService.getAllProduits()
+    this.catalogueService.getAllProduitsCustomRest()
     .subscribe(data => {
         this.produits = data;
     }, err => {
@@ -70,8 +71,9 @@ export class AdminProductsComponent implements OnInit {
 
 
   onUpdateProd(data) {
- 
-    this.catalogueService.putRessource(this.currentProduit._links.self.href, data)
+     console.log('data updated====================>', data)
+     const url = this.catalogueService.host + '/adminProd';
+    this.catalogueService.putRessource(url, data)
          .subscribe(data => {
             this.onGetAllProduits();
             this.mode = 'list';
@@ -82,19 +84,19 @@ export class AdminProductsComponent implements OnInit {
 
   
   onEditProd(prd) {
-     this.catalogueService.getRessource(prd._links.self.href)
-            .subscribe(data => {
-        this.currentProduit = data;
-        this.catalogueService.getRessource(prd._links.categorie.href)
-            .subscribe(cat => { this.currentCategorie = cat;
-              this.currentProduit.categorie = this.currentCategorie.nomCategorie;
-              console.log('Categorie associer a ce  produit', cat);
-                      }, err => { console.log('categorie inexistante', err); });
+      // this.catalogueService.getRessource(prd.idProduit)
+      //       .subscribe(data => {
+        this.currentProduit = prd;
+        // this.catalogueService.getRessource(prd._links.categorie.href)
+        //     .subscribe(cat => { this.currentCategorie = cat;
+        //       this.currentProduit.categorie = this.currentCategorie.nomCategorie;
+        //       console.log('Categorie associer a ce  produit', cat);
+        //               }, err => { console.log('categorie inexistante', err); });
         console.log('Edit produit', this.currentProduit);
-        this.mode = 'edit-prod';
-        }, err => {
-          console.log('problem was happen wen edit produit', err);
-        });
+         this.mode = 'edit-prod';
+        // }, err => {
+        //   console.log('problem was happen wen edit produit', err);
+        // });
 
   }
 
