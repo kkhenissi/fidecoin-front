@@ -5,7 +5,6 @@
     <tr>
         <th>Nom Produit</th>
         <th>Description  </th>
-        <th>Categorie  </th>
         <th>Prix initial</th>
         <th>Prix actuel </th>
         <th>Photo </th>
@@ -15,7 +14,7 @@
   </tr> -->
   <!-- {{produitsOfCat._embedded.produits.nomProduit}}  -->
   <tr *ngFor="let p of products._embedded.produits">
-  <td style=" vertical-align:middle">{{p.nomProduit}}</td><td style=" vertical-align:middle">{{p.designation}}</td><td style=" vertical-align:middle">{{p.categorie}}</td><td style=" vertical-align:middle">{{p.startPrice | number:'0.2'}}</td><td style=" vertical-align:middle">{{p.currentPrice | number:'0.2'}}</td>
+  <td style=" vertical-align:middle">{{p.nomProduit}}</td><td style=" vertical-align:middle">{{p.designation}}</td><td style=" vertical-align:middle">{{p.startPrice | number:'0.2'}}</td><td style=" vertical-align:middle">{{p.currentPrice | number:'0.2'}}</td>
                     <td><img class="img-circle" src={{p.urlPhoto}} width="100" height="100"></td>
 
                   </tr>

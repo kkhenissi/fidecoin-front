@@ -37,7 +37,7 @@ export class CatalogueService {
 
 
    getRessource(url) {
-    return this.http.get(url);
+       return this.http.get(url);
    }
 
    deleteRessource(url) {
