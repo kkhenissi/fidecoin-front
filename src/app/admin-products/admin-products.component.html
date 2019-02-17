@@ -83,8 +83,9 @@
                   </div>
                   <div class="form-group"  class="col-md-3">
                         <label class="control-label" for="categorieProd">Categorie</label>
-                        <select ngModel name="categorie" id="categorie" class="form-control" > 
-                            <option *ngFor="let cat of categoriesProd" [ngValue]="cat">{{cat.nomCategorie}}</option>
+                        <select ngModel name="categorie" id="categorie" class="form-control"> 
+                            <option value ="" selected>{{currentProduit.categorie.nomCategorie}}</option>
+                            <option *ngFor="let cat of categoriesProd"   [ngValue]="cat">{{cat.nomCategorie}}</option>
                         </select>
                   </div>  
                   <div class="form-group"  class="col-md-4">
@@ -95,7 +96,7 @@
                   <td></td>
                   </div>
                   <div class="col-md-8"></div>
-                  <div class=" img-circle col-md-4">
+                  <div class=" img-square col-md-4">
                         <img src={{currentProduit.urlPhoto}} width="380" height="300">
                   </div>   
                  
@@ -120,7 +121,7 @@
             </tr>
             <tr *ngFor="let p of produits">
                     <td style=" vertical-align:middle">{{p.nomProduit}}</td><td style=" vertical-align:middle">{{p.designation}}</td><td style=" vertical-align:middle">{{p.categorie.nomCategorie}}</td><td style=" vertical-align:middle">{{p.startPrice}}</td><td style=" vertical-align:middle">{{p.currentPrice}}</td>
-                    <td><img class="img-circle" src={{p.urlPhoto}} width="100" height="100"></td>
+                    <td><img class="img-square" src={{p.urlPhoto}} width="100" height="100"></td>
                      <td style=" vertical-align:middle">
                             <!-- {{p | json}} -->
                          <button  class="btn btn-danger" (click)="onDeleteProd(p)">
