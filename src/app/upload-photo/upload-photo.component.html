@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row"></div>
+  <div class="col s8 offset-2">
+    <div class="card-panel teal lighten-2">
+        <h4 class="center white-text">Photo Library</h4>
+    </div>
+    <form #photoForm = ngForm>
+      <div class="row">
+        <div class="input-field col s12">
+          <input type="text" #Caption ngModel name="Caption" id="Caption">
+          <label for="Caption">Photo</label>
+        </div>
+
+      </div>
+      <img [src]="imageUrl" style="width:250px;height:200px">
+      <input type="file" #Image accept="/assets/photos/*"  (change)="handleFileInput($event.target.files)">
+      <button type="submit" class="btn-large btn-submit">Submit</button>
+    </form>
+  </div>
+</div>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CatalogueService } from '../catalogue.service';
+import { ProductModel } from '../shared/models/product.model'
+import { CategorieModel } from '../shared/models/categorie.model';
 
 @Component({
   selector: 'app-admin-products',
@@ -9,8 +11,8 @@ import { CatalogueService } from '../catalogue.service';
 export class AdminProductsComponent implements OnInit {
   produits;
   mode = 'list';
-  currentProduit;
-  currentCategorie;
+  currentProduit: ProductModel;
+  currentCategorie: CategorieModel;
 
   categoriesProd;
 
@@ -100,5 +102,10 @@ export class AdminProductsComponent implements OnInit {
 
   }
 
+  handleUrlPhoto(urlImage) {
+  console.log('urlPhoto avant aupdate', urlImage);
+  this.currentProduit.urlPhoto = urlImage;
+  console.log('current produit avant update', this.currentProduit)
+ }
 
 }

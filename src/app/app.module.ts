@@ -15,6 +15,7 @@ import { AuthenticationService } from './authentication.service';
 import { AdminCategoriesComponent } from './admin-categories/admin-categories.component';
 import { AdminProductsComponent } from './admin-products/admin-products.component';
 import { AdminUsersComponent } from './admin-users/admin-users.component';
+import { UploadPhotoComponent } from './upload-photo/upload-photo.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AdminUsersComponent } from './admin-users/admin-users.component';
     LoginComponent,
     AdminCategoriesComponent,
     AdminProductsComponent,
-    AdminUsersComponent
+    AdminUsersComponent,
+    UploadPhotoComponent
   ],
   imports: [
     BrowserModule,
