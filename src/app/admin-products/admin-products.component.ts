@@ -74,6 +74,7 @@ export class AdminProductsComponent implements OnInit {
 
   onUpdateProd(data) {
      console.log('data updated====================>', data)
+     data.urlPhoto = this.currentProduit.urlPhoto;
      const url = this.catalogueService.host + '/adminProd';
     this.catalogueService.putRessource(url, data)
          .subscribe(data => {

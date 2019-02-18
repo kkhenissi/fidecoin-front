@@ -57,6 +57,6 @@ export class CatalogueService {
     console.log('what in data here =====>', data);
     console.log('what in url here =====>', url);
     return this.http.put(url, data,  {headers: header});
-   
+
   }
 }
