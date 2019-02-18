@@ -17,7 +17,7 @@
     </ul>
     <ul class="nav navbar-nav pull-right">
       <li>
-        <a *ngIf="!isAuthenticated()" routerLink="/login">Login</a>
+        <a *ngIf="!isAuthenticated()"  routerLink="/login" >Login</a>
         <a *ngIf="isAuthenticated()" class="btn" (click)="logOut()">LogOut</a>
       </li>
     </ul>
