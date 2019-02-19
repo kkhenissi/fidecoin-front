@@ -12,7 +12,7 @@ export class AdminProductsComponent implements OnInit {
   produits;
   mode = 'list';
   currentProduit: ProductModel;
-  currentCategorie: CategorieModel;
+  currentCategorie;
   nomSelectedCategorie: string;
 
   categoriesProd;
@@ -76,6 +76,7 @@ export class AdminProductsComponent implements OnInit {
   onUpdateProd(data) {
      console.log('data updated====================>', data)
      data.urlPhoto = this.currentProduit.urlPhoto;
+     data.categorie = this.currentCategorie;
      const url = this.catalogueService.host + '/adminProd';
     this.catalogueService.putRessource(url, data)
          .subscribe(data => {
@@ -88,12 +89,17 @@ export class AdminProductsComponent implements OnInit {
 
   
   onEditProd(prd) {
+   
       // this.catalogueService.getRessource(prd.idProduit)
       //       .subscribe(data => {
         this.currentProduit = prd;
-        console.log('currentProduit^^^^^^^^^^^^^^^>', this.currentProduit);
-        this.nomSelectedCategorie = this.currentProduit.categorie.nomCategorie;
+        this.currentCategorie = prd.categorie;
+        console.log('currentProduit befort^^^^^^^^^^^^^^^>', this.currentProduit);
+        this.nomSelectedCategorie = this.currentCategorie.nomCategorie;
            console.log('nom selected Categorie^^^^^^^^^^^^^^^>', this.nomSelectedCategorie);
+           console.log('current Categorie^^^^^^^^^^^^^^^>', this.currentCategorie);
+           this.currentProduit.categorie = this.currentCategorie;
+           console.log('currentProduit after^^^^^^^^^^^^^^^>', this.currentProduit);
         // this.catalogueService.getRessource(prd._links.categorie.href)
         //     .subscribe(cat => { this.currentCategorie = cat;
         //       this.currentProduit.categorie = this.currentCategorie.nomCategorie;
