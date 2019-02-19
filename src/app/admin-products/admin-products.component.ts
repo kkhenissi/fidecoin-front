@@ -13,6 +13,7 @@ export class AdminProductsComponent implements OnInit {
   mode = 'list';
   currentProduit: ProductModel;
   currentCategorie: CategorieModel;
+  nomSelectedCategorie: string;
 
   categoriesProd;
 
@@ -90,6 +91,9 @@ export class AdminProductsComponent implements OnInit {
       // this.catalogueService.getRessource(prd.idProduit)
       //       .subscribe(data => {
         this.currentProduit = prd;
+        console.log('currentProduit^^^^^^^^^^^^^^^>', this.currentProduit);
+        this.nomSelectedCategorie = this.currentProduit.categorie.nomCategorie;
+           console.log('nom selected Categorie^^^^^^^^^^^^^^^>', this.nomSelectedCategorie);
         // this.catalogueService.getRessource(prd._links.categorie.href)
         //     .subscribe(cat => { this.currentCategorie = cat;
         //       this.currentProduit.categorie = this.currentCategorie.nomCategorie;
