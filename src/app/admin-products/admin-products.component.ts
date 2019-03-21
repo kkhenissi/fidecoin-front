@@ -45,8 +45,9 @@ export class AdminProductsComponent implements OnInit {
 
   onDeleteProd(p) {
     const conf = confirm('Etes vous sure ?');
+    console.log('Produit ----++++--> !!', p);
     if (!conf) { return; }
-    this.catalogueService.deleteRessource(p._links.self.href)
+    this.catalogueService.deleteRessource(p)
         .subscribe(data => {
           this.onGetAllProduits();
         }, err => {
@@ -59,10 +60,10 @@ export class AdminProductsComponent implements OnInit {
     this.mode = 'new-prod';
 
   }
- 
+
   onSaveProd(data) {
     console.log('new Produit!!', data);
-    const url = this.catalogueService.host + '/produits';
+    const url = this.catalogueService.host + '/adminProd';
     this.catalogueService.postRessource(url, data)
          .subscribe(data => {
             this.onGetAllProduits();
@@ -87,19 +88,14 @@ export class AdminProductsComponent implements OnInit {
          });
   }
 
-  
+
   onEditProd(prd) {
-   
       // this.catalogueService.getRessource(prd.idProduit)
       //       .subscribe(data => {
         this.currentProduit = prd;
         this.currentCategorie = prd.categorie;
-        console.log('currentProduit befort^^^^^^^^^^^^^^^>', this.currentProduit);
         this.nomSelectedCategorie = this.currentCategorie.nomCategorie;
-           console.log('nom selected Categorie^^^^^^^^^^^^^^^>', this.nomSelectedCategorie);
-           console.log('current Categorie^^^^^^^^^^^^^^^>', this.currentCategorie);
-           this.currentProduit.categorie = this.currentCategorie;
-           console.log('currentProduit after^^^^^^^^^^^^^^^>', this.currentProduit);
+        this.currentProduit.categorie = this.currentCategorie;
         // this.catalogueService.getRessource(prd._links.categorie.href)
         //     .subscribe(cat => { this.currentCategorie = cat;
         //       this.currentProduit.categorie = this.currentCategorie.nomCategorie;

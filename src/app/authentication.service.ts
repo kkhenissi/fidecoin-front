@@ -8,7 +8,7 @@ import { Token } from '@angular/compiler';
 })
 export class AuthenticationService {
 
-  host2: string = 'http://localhost:8080';
+  host2: string = 'http://localhost:8082';
   jwt: string;
   userName: string;
   roles: Array<string>;

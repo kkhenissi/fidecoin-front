@@ -8,7 +8,7 @@ import { AuthenticationService } from './authentication.service';
 export class CatalogueService {
 
 
-  public host: String = 'http://localhost:8080';
+  public host: String = 'http://localhost:8082';
 
   constructor(private http: HttpClient,
               private authService: AuthenticationService) { }

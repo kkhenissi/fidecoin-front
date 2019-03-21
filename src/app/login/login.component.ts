@@ -8,6 +8,9 @@ import { Route, RouterLink, Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  public currentUser = {
+    userName: ''
+  } ;
 
   constructor(private authenticationService: AuthenticationService,
               private router: Router) { }
@@ -22,6 +25,8 @@ export class LoginComponent implements OnInit {
             console.log(resp);
           const jwt = resp.headers.get('Authorization');
           this.authenticationService.saveToken(jwt);
+          this.currentUser.userName = f.userName;
+          console.log('-------------------------------------->', this.currentUser);
           this.router.navigateByUrl('/');
           }, err => {
 
