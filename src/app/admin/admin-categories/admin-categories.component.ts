@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CatalogueService } from '../catalogue.service';
+import { CatalogueService } from '../../catalogue.service';
 
 @Component({
   selector: 'app-admin-categories',

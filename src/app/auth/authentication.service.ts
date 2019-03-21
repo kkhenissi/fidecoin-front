@@ -12,6 +12,8 @@ export class AuthenticationService {
   jwt: string;
   userName: string;
   roles: Array<string>;
+   // store the URL so we can redirect after logging in
+   redirectUrl: string;
 
   constructor(private http: HttpClient) { }
 

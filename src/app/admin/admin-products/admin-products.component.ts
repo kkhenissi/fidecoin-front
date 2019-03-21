@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CatalogueService } from '../catalogue.service';
-import { ProductModel } from '../shared/models/product.model'
-import { CategorieModel } from '../shared/models/categorie.model';
+import { CatalogueService } from '../../catalogue.service';
+import { ProductModel } from '../../shared/models/product.model'
+import { CategorieModel } from '../../shared/models/categorie.model';
 
 @Component({
   selector: 'app-admin-products',
